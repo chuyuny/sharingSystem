@@ -1,0 +1,9 @@
+<div class="user-answer">
+  <div class="user-ans">{{ isMe ?'我的回答':'他的回答'}}</div>
+  <div class="answer-list" *ngIf="userAnswerArr">
+    <div class="item-box" *ngFor="let answer of userAnswerArr ; let i = index " >
+      <app-answer [(userAnswerDetail)]="userAnswerArr[i]" ></app-answer>
+    </div>
+  </div>
+  <div class="no-content" *ngIf="!userAnswerArr"><img src="assets/img/no-content.png" alt=""></div>
+</div>

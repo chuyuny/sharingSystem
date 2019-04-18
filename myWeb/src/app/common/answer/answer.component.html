@@ -1,0 +1,89 @@
+ <div class="answer-item home-left" *ngIf="answer " >
+    <!--<h4 ><a [routerLink]="['/question-detail',recommend.questionId]">{{ recommend.questionTitle }}</a></h4>-->
+    <div class="answer-content">
+      <div class="user-info">
+        <img class="user-portrait" [src]="answer.answerAuthor.userPicture" alt="" [routerLink]="['/profile',answer.answerAuthor.mobile,'actives']">
+        <span class="user-name" [routerLink]="['/profile',answer.answerAuthor.mobile,'actives']">{{answer.answerAuthor.userName}}</span>
+        <span class="user-description">{{answer.answerAuthor.userDescription}}</span>
+      </div>
+      <div class="answer " [ngClass]="{'is-collapsed':answer.answer.answerContent.length>300}"  (mouseleave)="getMouseleave($event)" (mouseenter)="getMouseEnter($event)">
+        <div class="answer-inner">
+          <div class="answer-detail" [innerHTML]="answer.answer.answerContent | html" ></div>
+        </div>
+        <button type="button" class="read-all button button-margin-right-12" [hidden]="answer.answer.answerContent.length<=300" (click)="readAll($event)">
+          阅读全文
+          <span class="glyphicon glyphicon-chevron-down  icon-margin-left"></span>
+        </button>
+        <button type="button" class="takeUp button button-margin-right-24 pull-right" (click)="takeUp($event)">
+          收起
+          <span class="glyphicon glyphicon-chevron-up  icon-margin-left"></span>
+        </button>
+      </div>
+    </div>
+    <!--operation-->
+    <div class="question-detail-operation ">
+      <app-operation [(answer)]="answer.answer"></app-operation>
+    </div>
+  </div>
+
+
+ <div class="answer-item " *ngIf="userAnswerDetail" >
+   <div class="question-title">
+     <h3 ><a [routerLink]="['/question-detail', userAnswerDetail.question.questionId]">{{ userAnswerDetail.question.questionTitle }}</a></h3>
+   </div>
+   <div class="answer-content">
+     <div class="user-info">
+       <img class="user-portrait" [src]="userAnswerDetail.answerAuthor.userPicture" alt="" [routerLink]="['/profile',userAnswerDetail.answerAuthor.mobile,'actives']">
+       <span class="user-name" [routerLink]="['/profile',userAnswerDetail.answerAuthor.mobile,'actives']">{{userAnswerDetail.answerAuthor.userName}}</span>
+       <span class="user-description">{{userAnswerDetail.answerAuthor.userDescription}}</span>
+     </div>
+     <div class="answer " [ngClass]="{'is-collapsed':userAnswerDetail.answer.answerContent.length>300}"  (mouseleave)="getMouseleave($event)" (mouseenter)="getMouseEnter($event)">
+       <div class="answer-inner">
+         <div class="answer-detail" [innerHTML]="userAnswerDetail.answer.answerContent | html"></div>
+       </div>
+       <button type="button" class="read-all button button-margin-right-12" [hidden]="userAnswerDetail.answer.answerContent.length<=300" (click)="readAll($event)">
+         阅读全文
+         <span class="glyphicon glyphicon-chevron-down  icon-margin-left"></span>
+       </button>
+       <button type="button" class="takeUp button button-margin-right-24 pull-right" (click)="takeUp($event)">
+         收起
+         <span class="glyphicon glyphicon-chevron-up  icon-margin-left"></span>
+       </button>
+     </div>
+   </div>
+   <div class="ask-status" *ngIf="isActive">
+     <span class="status-item">{{'发表时间：'+ (userAnswerDetail.time | date:'yyyy-MM-dd')}}</span>
+   </div>
+   <div class="question-detail-operation ">
+     <app-operation [(answer)]="userAnswerDetail.answer"></app-operation>
+   </div>
+ </div>
+
+ <div class="answer-item home-left" *ngIf="userAnswerCollect" >
+   <div class="question-title">
+     <h3 ><a [routerLink]="['/question-detail', userAnswerCollect.question.questionId]">{{ userAnswerCollect.question.questionTitle }}</a></h3>
+   </div>
+   <div class="answer-content">
+     <div class="user-info">
+       <img class="user-portrait" [src]="userAnswerCollect.answer.answerAuthor.userPicture" alt="" [routerLink]="['/profile',userAnswerCollect.answer.answerAuthor.mobile,'actives']">
+       <span class="user-name" [routerLink]="['/profile',userAnswerCollect.answer.answerAuthor.mobile,'actives']">{{userAnswerCollect.answer.answerAuthor.userName}}</span>
+       <span class="user-description">{{userAnswerCollect.answer.answerAuthor.userDescription}}</span>
+     </div>
+     <div class="answer " [ngClass]="{'is-collapsed':userAnswerCollect.answer.answerDetail.answerContent.length>300}"  (mouseleave)="getMouseleave($event)" (mouseenter)="getMouseEnter($event)">
+       <div class="answer-inner">
+         <div class="answer-detail" [innerHTML]="userAnswerCollect.answer.answerDetail.answerContent | html"></div>
+       </div>
+       <button type="button" class="read-all button button-margin-right-12" [hidden]="userAnswerCollect.answer.answerDetail.answerContent.length<=300" (click)="readAll($event)">
+         阅读全文
+         <span class="glyphicon glyphicon-chevron-down  icon-margin-left"></span>
+       </button>
+       <button type="button" class="takeUp button button-margin-right-24 pull-right" (click)="takeUp($event)">
+         收起
+         <span class="glyphicon glyphicon-chevron-up  icon-margin-left"></span>
+       </button>
+     </div>
+   </div>
+   <div class="question-detail-operation ">
+     <app-operation [(answer)]="userAnswerCollect.answer"></app-operation>
+   </div>
+ </div>

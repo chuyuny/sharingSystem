@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="home-box">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+<app-confirm-box [(data)] = "data" *ngIf="data"></app-confirm-box>
+

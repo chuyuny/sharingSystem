@@ -1,0 +1,16 @@
+<div class="right-bar">
+  <div class="card ">
+    <div class="write">
+      <div class="write-nav">
+        <a target="_blank" class="write-nav-item" routerLink="/question-list" >写回答</a>
+        <a target="_blank" class="write-nav-item" routerLink="/editor">写文章</a>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <ul class="nav-list">
+      <!--<li class="nav-list-item"><a href="#"><span class="glyphicon glyphicon-star icon-margin"></span>我的收藏</a></li>-->
+      <li class="nav-list-item"><a class="follow"  (click)="goNext('follow')" ><span class="glyphicon glyphicon-star icon-margin"></span>我关注的问题</a></li>
+    </ul>
+  </div>
+</div>

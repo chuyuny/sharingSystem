@@ -1,0 +1,30 @@
+<div class="question-type1"  (mouseleave)="getMouseleave($event)" (mouseenter)="getMouseEnter($event)">
+  <h4 ><a target="_blank" [routerLink]="['/question-detail',recommend.question.questionId]">{{ recommend.question.questionTitle }}</a></h4>
+  <div class="recommend-answer is-collapsed">
+    <div class="row question"  >
+      <div class="col-sm-4 in-img" *ngIf="recommend.answer?recommend.answer.answerContent.match(imgReg) : false" [innerHTML]="recommend.answer.answerContent.match(imgReg)[0]  | html"></div>
+      <div class=" article-list-content" [ngClass]="{'col-sm-7': recommend.answer? recommend.answer.answerContent.match(imgReg): false,'col-sm-11':recommend.answer? !recommend.answer.answerContent.match(imgReg): true}">
+        <p style=" display: inline; -webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;" class="article-content ">{{((recommend.answer?recommend.answer.answerContent:recommend.question.questionContent).replace(imgReg,'')).replace(deleteHreg,'').substr(0,200)+ '...'}}</p>
+        <button type="button" class="read-all button button-margin-right-12" (click)="readAll($event)">
+          阅读全文
+        </button>
+      </div>
+    </div>
+    <div class="detail">
+      <button type="button" class="takeUp button button-margin-right-24 pull-right" (click)="takeUp($event)">
+        收起
+        <span class="glyphicon glyphicon-chevron-up  icon-margin-left"></span>
+      </button>
+      <div class="user-info" *ngIf="recommend.answer" >
+        <a target="_blank" class="user-a" [routerLink]="['/profile',recommend.answerAuthor.mobile,'actives']"><img class="user-portrait"  [src]="recommend.answerAuthor.userPicture? recommend.answerAuthor.userPicture: './assets/img/noUserPicture.jpg'" alt=""></a>
+        <a target="_blank" class="user-name" [routerLink]="['/profile',recommend.answerAuthor.mobile,'actives']">{{recommend.answerAuthor.userName}}</a>
+        <span class="user-description">{{recommend.answerAuthor.userDescription}}</span>
+      </div>
+      <div class="answer-detail" [innerHTML]="(recommend.answer?recommend.answer.answerContent: recommend.question.questionContent )| html"></div>
+    </div>
+  </div>
+  <!--operation-->
+  <div *ngIf="recommend.answer" class="question-detail-operation ">
+    <app-operation [(answer)]="recommend.answer"></app-operation>
+  </div>
+</div>

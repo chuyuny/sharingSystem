@@ -1,0 +1,9 @@
+
+<div class="container-mine" *ngIf="questions">
+  <div class="question-list home-left" *ngFor="let question of questions ; let i = index" >
+    <app-question-type1 [(recommend)]="questions[i]"></app-question-type1>
+  </div>
+  <div style="height: 40px;background-color:white; text-align:center; color: #a62d26;line-height: 40px; margin: 12px 0px" *ngIf="error">{{error}}</div>
+  <div class="get-more" (click)="updata()">换一批</div>
+</div>
+<div *ngIf="!questions" class="no-content" style="height: 300px; width: 100%; text-align: center;line-height: 300px ;background-color: white;box-shadow: 0 0 1px rgba(200,200,200,0.3)">暂无内容</div>

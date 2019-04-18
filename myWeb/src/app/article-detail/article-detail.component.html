@@ -1,0 +1,38 @@
+<div class="article-box" *ngIf="article">
+  <nav class="article-detail-nav" *ngIf="!isWriteAnswer">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand logo-a" href="#"><img class="logo-img" src="./assets/img/logo.png" alt="logo"></a>
+        </div>
+        <div class="article-detail-nav-right pull-right">
+          <a [routerLink]="['/editor']" class="release" >写文章</a>
+        </div>
+      </div>
+    </nav>
+  <div class="container-mine">
+    <div class="article-detail">
+      <div class="article-title"><h2><a>{{article.article.articleTitle}}</a></h2></div>
+      <div class="user-info">
+        <div class="user-right">
+          <img class="user-portrait" [routerLink]="['/profile',article.articleAuthor.mobile,'actives']" [src]="article.articleAuthor.userPicture?article.articleAuthor.userPicture:'assets/img/noUserPicture.jpg'" alt="">
+        </div>
+        <div class="user-left">
+          <span class="user-name" [routerLink]="['/profile',article.articleAuthor.mobile,'actives']">{{article.articleAuthor.userName}}</span>
+          <span class="user-description">{{article.articleAuthor.userDescription+'cccccccccccccccccccccc'}}</span>
+        </div>
+      </div>
+      <div class="article-content" [innerHTML]="article.article.articleContent | html"></div>
+    </div>
+  </div>
+  <div class="comment-detail" *ngIf="isShowComment">
+    <div class="container-mine article-comment">
+      <app-comment-detail [isArticleDetail]="isArticleDetail" [articleId]="article.article.articleId"></app-comment-detail>
+    </div>
+    <div class="close-comment" (click)="isShowComment =!isShowComment">X</div>
+  </div>
+  <div class="article-detail-bottom">
+    <div class="container-mine ">
+      <app-operation [isArticleDetail]="isArticleDetail" [(article)]="article.article" [(isShowComment)]="isShowComment"></app-operation>
+    </div>
+  </div>
+</div>

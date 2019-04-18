@@ -1,0 +1,150 @@
+.article{
+  .article-operation{
+    margin: 12px;
+  }
+  .article-detail{
+    position: relative;
+    .article-user{
+      border-top: 1px solid rgba(200,200,200,0.3);
+      padding: 24px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .article-title{
+      h2{
+        a{
+          color: #333;
+          &:hover{
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .user-info{
+      display: flex;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      .user-right{
+        .user-portrait{
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .user-left{
+        margin-left: 12px;
+        margin-left: 12px;
+        .user-name,.user-description{
+          display: block;
+          font-size: 18px;
+          max-width: 120px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .user-description{
+          font-size: 12px;
+        }
+      }
+    }
+    .article-box{
+      &.is-collapsed{
+        .article-inner{
+          height: 300px;
+          overflow: hidden;
+        }
+      }
+      .article-inner{
+        .article-content{
+          text-indent: 2px;
+        }
+      }
+      .read-all{
+        position: absolute;
+        padding-top: 10px;
+        bottom: 0px;
+        width: 100%;
+        height: 40px;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,1));
+        font-size: 24px;
+      }
+      .takeUp{
+        display: none;
+        position: fixed;
+        height: 30px;
+        width: 80px;
+        right: 35%;
+        top: 80%;
+        z-index: 1000000;
+        background-color: #0084FF;
+        color: white;
+      }
+    }
+  }
+  .ask-status{
+    .status-item{
+      margin-top: 5px;
+      margin-right: 12px;
+      color: #8590A6;
+      font-size: 14px;
+    }
+  }
+}
+.takeUp{
+  display: none;
+}
+.comment-detail{
+  margin-top: 12px;
+  box-shadow: 0 0 1px #b2b2b2;
+  padding: 24px;
+  display: none;
+  .comment-length{
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .comment-info{
+    margin-bottom: 12px;
+    .user-info{
+      height: 30px;
+      .user-portrait{
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+      }
+      .user-name,.user-description{
+        margin-left: 12px;
+      }
+      .user-name{
+        font-size: 20px;
+      }
+    }
+    .comment-content{
+      margin-left: 42px;
+    }
+  }
+  .add-comment{
+    display: flex;
+    height: 40px;
+    margin-top: 12px;
+    .write-comment{
+      flex: 8;
+    }
+    .add-comment{
+      flex: 1;
+      margin: 0;
+    }
+  }
+  .takeUp-comment{
+    position: fixed;
+    bottom: 30px;
+    left: 900px;
+    height: 30px;
+    width: 93px;
+    background-color: #b2b2b2;
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+  }
+}

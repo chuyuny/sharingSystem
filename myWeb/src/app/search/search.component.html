@@ -1,0 +1,27 @@
+
+<div class="search-box" >
+  <div class="container-mine">
+    <div class="search-list" *ngIf="searchResults">
+      <div class="search-item "  *ngFor="let result of searchResults">
+      <div class="search-result-title">
+        <div class="result-title" *ngIf="result.answerId">
+          <h3 ><a [routerLink]="['/question-detail',result.question.questionId]" [innerHTML]="result.question.questionTitle | keyword:keyword"></a></h3>
+        </div>
+        <div class="result-title" *ngIf="result.articleId">
+          <h3 ><a [routerLink]="['/article-detail',result.article.articleId]" [innerHTML]="result.article.articleTitle | keyword:keyword"></a></h3>
+        </div>
+        <div class="search-result-detail">
+          <div class="result-detail" *ngIf="result.articleId" [innerHTML]="((result.article.articleContent.replace(imgReg,'')).replace(deleteHreg,'').substr(0,200)+ '...') | keyword:keyword"></div>
+          <div class="result-detail" *ngIf="result.answerId" [innerHTML]="((result.answer.answerContent.replace(imgReg,'')).replace(deleteHreg,'').substr(0,200)+ '...' ) | keyword:keyword"></div>
+        </div>
+        <div class="search-result-bottom">
+          <span class="result-author" ><span class="author">作者：</span>{{result.articleId?result.articleAuthor.userName:result.answerAuthor.userName}}</span>
+          <span class="result-time" ><span class="time">日期：</span>{{(result.articleId?result.article.articletime:result.answer.answertime)| date:'yyyy-MM-dd'}} </span>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div *ngIf="!searchResults" class="no-content" style="height: 300px; width: 100%; text-align: center;line-height: 300px ;background-color: white;box-shadow: 0 0 1px rgba(200,200,200,0.3)">暂无搜索结果</div>
+  </div>
+</div>
+

@@ -1,0 +1,151 @@
+.profile {
+  //margin-top: -20px;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: white;
+  padding: 24px;
+}
+.edit-profile{
+  .user-picture{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    .user-portrait{
+      height: 100px;
+      width: 100px;
+
+    }
+    &:hover .update-img{
+      opacity: 0.6;
+    }
+    .update-img{
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      left: 50%;
+      top: 50%;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: 0.3s;
+      -webkit-transition: .5s;
+      -moz-transition: .5s;
+      .camera{
+        height: 50px;
+        width: 50px;
+        font-size: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #c4bec7;
+      }
+      input{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 50px;
+        width: 50px;
+        border: none;
+        opacity: 0;
+      }
+    }
+  }
+  .Profile-contentHead{
+    position: relative;
+    .go-profile{
+      position: absolute;
+      right: 12px;
+      top: 12px;
+    }
+  }
+  .name-change,.sex-change, .description-change, .introduction-change{
+    height: 40px;
+    width: 70%;
+    .form-control{
+      height: 40px;
+    }
+  }
+  .sex-change{
+    .sex{
+      height: 16px;
+      width: 16px;
+      margin:0 12px;
+    }
+    .Field-text{
+      margin-right: 12px;
+      height: 16px;
+      min-width: 16px;
+      line-height: 16px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+  }
+  .name-change{
+    height: 80px;
+    .new-user-name{
+      font-size: 36px;
+      font-weight: 500;
+    }
+    .form-control{
+      height: 60px;
+    }
+  }
+  .user-name{
+    display: inline-block;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .change {
+    display: none;
+    height: 30px;
+    width: 60px;
+    font-size: 14px;
+    position: absolute;
+    margin-left: 16px;
+    line-height: inherit;
+    transition: opacity 100ms;
+    color: #175199;
+  }
+  .Field {
+    padding: 30px 0;
+    border-bottom: 1px solid #EBEBEB;
+    .Field-label {
+      position: absolute;
+      font-size: 15px;
+      font-weight: 600;
+      font-synthesis: style;
+      height: 40px;
+      line-height: 40px;
+      color: #444444;
+      margin: 0;
+    }
+    .Field-content {
+      padding: 0 64px 0 140px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  .form {
+    display: block;
+    margin-top: 0em;
+  }
+}
+.btnGroup{
+  height: 50px;
+  margin-bottom: 24px;
+  .save,.cancel{
+    height: 30px;
+    width: 60px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 24px;
+    border: none;
+  }
+  .save{
+    background-color: #0084FF;
+    color: white;
+  }
+}

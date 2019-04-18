@@ -1,0 +1,77 @@
+
+<div class="set clear-nav">
+  <app-navbar></app-navbar>
+  <div class="container-mine">
+    <div class="set-inner row">
+      <div class="col-sm-3">
+        <ul class="ul-left">
+          <li class="set-item change-password" [ngClass]="{'active': showChangPassword}" (click)="show('password')">修改密码</li>
+          <li  class="set-item change-mobile" [ngClass]="{'active': showChangMobile}" (click)="show('mobile')">修改手机号</li>
+        </ul>
+      </div>
+      <div class="col-sm-9">
+          <div class="change-item change-password-box" *ngIf="showChangPassword">
+              <div class="change-index">
+                <h3>修改密码</h3>
+              </div>
+              <div class="change-content">
+                <!--<div class="password-box">-->
+                  <!--<label for="password" class="lab-item"> 请输入旧密码:</label>-->
+                  <!--<input type="password" id="password" class="form-control inp-password" [(ngModel)]="password">-->
+                <!--</div>-->
+                <div class="mobile-box">
+                  <label for="inp-mobile" class="lab-item"> {{'手机号:'}}</label>
+                  <input type="text" id="inp-mobile" class="form-control inp-mobile"  disabled placeholder="{{showCurrentMobile?currentUser.mobile.substr(0,2)+'****'+currentUser.mobile.substr(7,11):''}}" maxlength="11">
+                  <button class="get-identifying-code right" [ngClass]="{'bg-gray':!isGetIdentifyCode}" [disabled]="(!isGetIdentifyCode && time>0)" (click)="getIdentifyingCode(true)"> {{isGetIdentifyCode?'获取验证码':'重新获取'+time+'s' }}</button>
+                </div>
+                <div class="password-box warning" [class.hidden]="!error || mobile.valid">{{error}}</div>
+                <div class="mobile-box">
+                  <label for="identifying-code"  class="lab-item"> 请输入验证码:</label>
+                  <input type="text" id = "identifying-code"  class="form-control identifying-code" [(ngModel)]="identifyCode">
+                </div>
+                <div class="password-box warning" [class.hidden]="identify">验证码输入错误，请重新输入</div>
+                <!--<div class="password-box warning" *ngIf="isChangSuccess !== undefined && !isChangSuccess">密码错误 请重新输入 </div>-->
+                <div class="password-box">
+                  <label for="new-password"  class="lab-item"> 请输入新密码:</label>
+                  <input type="password" id="new-password" class="form-control inp-password" [(ngModel)]="newPassword" >
+                </div>
+                <div class="password-box warning" *ngIf="newPassword !== undefined && newPassword.length <6">请输入6个字符以上</div>
+                <div class="password-box warning" *ngIf="newPassword !== undefined && password === newPassword">请输入不同的密码</div>
+                <div class="password-box">
+                  <label for="p-new-password" class="lab-item"> 请确认新密码:</label>
+                  <input type="password" id="p-new-password" class="form-control inp-password" [(ngModel)]="newPconfirm">
+                </div>
+                <div class="password-box warning" *ngIf="newPconfirm !== undefined && newPconfirm !== newPassword"> 两次密码不相同 </div>
+                <div class="password-box warning" *ngIf="isChangSuccess !== undefined && isChangSuccess">修改成功 </div>
+                <div class="password-box warning" *ngIf="changeResult && changeResult.code === 2"> 修改失败 </div>
+                <button class="button confirm" type="submit" (click)="confirm('password')">确认</button>
+              </div>
+          </div>
+        <div class="change-item change-mobile-box" *ngIf=" showChangMobile">
+          <div class="change-index">
+            <h3>修改手机号</h3>
+          </div>
+          <div class="change-content">
+            <div class="old-mobile">
+              <div class="mobile-box">
+                <label  class="lab-item"> {{showCurrentMobile?'当前手机号:':'请输入新手机号:'}}</label>
+                <input type="text" class="form-control inp-mobile" *ngIf="showCurrentMobile" [disabled]="showCurrentMobile" placeholder="{{showCurrentMobile?currentUser.mobile.substr(0,2)+'****'+currentUser.mobile.substr(7,11):''}}">
+                <input type="text" class="form-control inp-mobile"   *ngIf="!showCurrentMobile" placeholder="请输入新号码" [formControl]="newMobile" maxlength="11">
+                <button class="get-identifying-code right" [ngClass]="{'bg-gray':!isGetIdentifyCode}" [disabled]="(!isGetIdentifyCode && time>0)" (click)="getIdentifyingCode(showCurrentMobile)"> {{isGetIdentifyCode?'获取验证码':'重新获取'+time+'s' }}</button>
+              </div>
+              <div class="password-box warning" [class.hidden]="!newMobile.hasError('mobile')">请输入正确的手机号码</div>
+              <div class="password-box warning" *ngIf="!changMobileMessage && currentUser.mobile === newMobile.value">请不同的手机号码</div>
+              <div class="mobile-box">
+                <label for="new-password"  class="lab-item"> 请输入验证码:</label>
+                <input type="text"  class="form-control identifying-code" [(ngModel)]="identifyCode">
+              </div>
+              <div class="password-box warning" [class.hidden]="identify">验证码输入错误，请重新输入</div>
+              <div class="password-box warning" *ngIf="changMobileMessage">修改成功</div>
+              <button class="button confirm" type="submit" (click)="confirm('changeMobile')">确认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

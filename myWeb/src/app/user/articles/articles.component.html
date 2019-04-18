@@ -1,0 +1,9 @@
+<div class="user-article" >
+  <div class="user-article">{{isMe?'我的文章':'他的文章'}}</div>
+  <div *ngIf="articles">
+    <div class="article-item" *ngFor="let article of articles; let i = index" >
+      <app-article [(article)]="articles[i]"></app-article>
+    </div>
+  </div>
+  <div class="no-content" *ngIf="!articles "><img src="./assets/img/no-content.png" alt=""></div>
+</div>

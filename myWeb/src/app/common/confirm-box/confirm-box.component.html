@@ -1,0 +1,9 @@
+<div class="confirm-box" *ngIf="data">
+  <div class="content-box">
+    <div class="delete-content">{{data.message}}</div>
+    <div class="confirm-content" >
+      <div class="confirm"  (click)="confirm()">确定</div>
+      <div class="cancel" *ngIf="data.isDelete && data.isShowCancel" (click)="cancel()">取消</div>
+    </div>
+  </div>
+</div>

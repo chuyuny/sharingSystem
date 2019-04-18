@@ -1,0 +1,8 @@
+<div class="hot-article">
+  <div class="article-item" *ngFor="let article of hotArticles; let i = index" >
+   <app-article [(article)]="hotArticles[i]"></app-article>
+  </div>
+</div>
+<div *ngIf="!hotArticles" class="no-content" style="height: 300px; width: 100%; text-align: center;line-height: 300px ;background-color: white;box-shadow: 0 0 1px rgba(200,200,200,0.3)">暂无内容</div>
+<div style="height: 40px;background-color:white; text-align:center; color: #a62d26;line-height: 40px; margin: 12px 0px" *ngIf="error">{{error}}</div>
+<div class="get-more" (click)="getMore(clickMoreCount)">获取更多</div>

@@ -1,0 +1,9 @@
+<div class="ask box" >
+  <div class="user-ask">{{isMe?'我的提问':'他的提问'}}</div>
+  <div class="ask-box" *ngIf="questions">
+    <div class="list-item" *ngFor="let question of questions; let i = index">
+      <app-ask [(question)]="questions[i]"></app-ask>
+    </div>
+  </div>
+  <div class="no-content" *ngIf="!questions"><img src="./assets/img/no-content.png" alt=""></div>
+</div>

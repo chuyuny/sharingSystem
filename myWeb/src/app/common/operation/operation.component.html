@@ -1,0 +1,30 @@
+
+<div class="operation margin-top-12" >
+  <div class="pull-left">
+    <button type="button" class="likes button button-margin-right-24 " (click)="addThanks($event,currentCommentForId)" >
+      <span class="glyphicon glyphicon-heart icon-margin darkred"></span>
+      {{currentContent.thanks}}
+    </button>
+    <button type="button" class="operation-comment button button-margin-right-24 " (click)="showComment($event,isShowComment)">
+      <span class="glyphicon glyphicon-comment icon-margin"></span>
+      {{!isShowComment? '评论':'收起评论'}}
+    </button>
+    <!--<button type="button" class="collection button button-margin-right-24 " (click)="addCollect($event)">-->
+      <!--<span class="glyphicon  icon-margin" [ngClass]="{'glyphicon-star-empty': !currentContent.isColleted, 'glyphicon-star': currentContent.isColleted}"></span>-->
+      <!--{{!currentContent.isColleted?'收藏':'取消收藏'}}-->
+    <!--</button>-->
+  </div>
+  <div class="pull-right">
+    <!--<button type="button" class="delete button button-margin-right-24" *ngIf="!show" >-->
+      <!--举报-->
+      <!--<span class="iconfont  icon-margin icon-margin-left">&#xe601;</span>-->
+    <!--</button>-->
+    <button *ngIf="show" type="button" class="delete button button-margin-right-24" (click)="showConfirm()"  >
+      删除<span class="glyphicon glyphicon-trash  icon-margin-left"></span>
+    </button>
+  </div>
+</div>
+<div class="comment" *ngIf="isShowComment && !isArticleDetail"  >
+  <app-comment-detail [answerId] = "answerId"  [questionId] = "questionId" [articleId]="articleId" ></app-comment-detail>
+</div>
+

@@ -1,0 +1,19 @@
+
+<div class="comment-detail"  >
+  <div class="comment-length">{{currentComments?'总共'+currentComments.length+'条评论':'暂无评论'}}</div>
+  <div class="comment-detail-content" *ngIf="currentComments">
+    <div class="comment-info" *ngFor="  let comment of currentComments ; let i =index" >
+      <div class="comment-left">
+        <img class="user-portrait" [src]="comment.commentAuthor.userPicture? comment.commentAuthor.userPicture:'assets/img/noUserPicture.jpg'" alt="">
+      </div>
+      <div class="comment-right" >
+        <span class="user-name">{{comment.commentAuthor.userName}}</span>
+        <div class="comment-box"><p class="comment-content">{{ comment.comment.commentContent }}</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="add-comment row">
+    <input class="write-comment col-sm-9" [(ngModel)]="newComment" type="text" placeholder="写下你的评论">
+    <button class="add-comment-btn col-sm-3 " (click)="addComment( $event )">增加评论</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+
+<div class="active-box" >
+  <div class="user-active">{{isMe?'我的动态':'他的动态'}}</div>
+  <div class="item-box" *ngIf="actives">
+    <div class="active-item" *ngFor="let active of actives ; let i = index">
+      <div class="answer-box" *ngIf="active.type == 'answer'">
+        <app-answer [(userAnswerDetail)]="actives[i]" [isActive]="true" ></app-answer>
+      </div>
+      <div class="article-box" *ngIf="active.type == 'article'">
+        <app-article [(article)]="actives[i]" [isActive]="true"></app-article>
+      </div>
+      <div class="ask-box" *ngIf="active.type == 'question'">
+        <app-ask [(question)]="actives[i]"></app-ask>
+      </div>
+      <div class="follow-box" *ngIf="active.type == 'follow'">
+        <app-ask [(question)]="actives[i]"></app-ask>
+      </div>
+    </div>
+  </div>
+  <div class="no-content" *ngIf="!actives"><img src="assets/img/no-content.png" alt=""></div>
+</div>

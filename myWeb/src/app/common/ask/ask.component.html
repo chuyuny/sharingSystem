@@ -1,0 +1,10 @@
+<div class="ask-item">
+  <div class="ask-title">
+    <h3><a [routerLink]="['/question-detail',question.question.questionId]">{{ question.question.questionTitle+'?' }}</a></h3>
+  </div>
+  <div class="ask-status">
+    <span class="status-item">{{question.followTime ? '关注时间：' + (question.followTime | date:'yyyy-MM-dd') : '发表时间：'+ (question.question.questiontime | date:'yyyy-MM-dd')}}</span>
+    <span class="status-item">{{question.answerCount + '个回答'}}</span>
+    <span class="status-item">{{question.followCount + '个关注'}}</span>
+  </div>
+</div>

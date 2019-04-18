@@ -1,0 +1,10 @@
+<div class="top-tabCard" >
+  <ul class="tab-list">
+    <li class="tab-item" ><a  class="tab-link actives " (click)="addActive($event,'actives')" [routerLink]="['/profile',user.mobile,'actives']">动态</a></li>
+    <li class="tab-item" ><a  class="tab-link answers "  (click)="addActive($event,'answers')" [routerLink]="['/profile',user.mobile,'answers']" >回答</a></li>
+    <li class="tab-item" ><a  class="tab-link asks" (click)="addActive($event,'asks')" [routerLink]="['/profile',user.mobile,'asks']">提问</a></li>
+    <li class="tab-item" ><a  class="tab-link articles" (click)="addActive($event,'articles')" [routerLink]="['/profile',user.mobile,'articles']" >文章</a></li>
+    <!--<li class="tab-item" ><a  class="tab-link collect" (click)="addActive($event,'collect')" [routerLink]="['/profile',user.mobile,'collect']" >收藏</a></li>-->
+    <li class="tab-item" ><a  class="tab-link follow" (click)="addActive($event,'follow')" [routerLink]="['/profile',user.mobile,'follow']" >关注</a></li>
+  </ul>
+</div>

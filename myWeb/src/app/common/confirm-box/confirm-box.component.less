@@ -1,0 +1,46 @@
+.confirm-box{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(6, 6, 6, 0.3);
+  z-index: 1000000000;
+  .content-box{
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    transform: translate(-50%,-50%);
+    .delete-content{
+      padding: 24px 0;
+      font-size: 18px;
+      text-align: center;
+      line-height: 1;
+    }
+    .confirm-content{
+      height: 40px;
+      display: flex;
+      .confirm,.cancel{
+        flex: 1;
+        height: 40px;
+        color: rgba(6, 6, 6, 0.3);
+        line-height: 40px;
+        text-align: center;
+        font-size: 18px;
+        transition: .5s ;
+        &:hover{
+          background-color: rgba(35, 35, 35, 0.3);
+          color: #ff6244;
+        }
+      }
+      .cancel{
+        &:hover{
+          color: #fffefd;
+        }
+      }
+    }
+  }
+
+}

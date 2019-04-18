@@ -1,0 +1,131 @@
+
+.question-type1{
+  a{
+    &:hover{
+      text-decoration: none;
+      color: #004b95;
+    }
+  }
+  .recommend-answer{
+    .question{
+      max-height: 150px;
+      .in-img{
+        height: 150px;
+      }
+    }
+    .detail{
+      display: none;
+    }
+  }
+  .article-list-content{
+    &.col-sm-7{
+      .article-content{
+        padding: 0px;
+      }
+      .read-all{
+        padding: 0px;
+      }
+    }
+    .article-content{
+      display: inline;
+      padding-left: 24px;
+      padding-right: 24px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .read-all{
+      margin-left: 12px;
+    }
+  }
+  .detail{
+    .takeUp{
+      //display: none;
+      position: fixed;
+      height: 30px;
+      width: 80px;
+      right: 35%;
+      top: 80%;
+      z-index: 1000000;
+      background-color: #0084FF;
+      color: white;
+    }
+    .user-info{
+      height: 30px;
+      .user-a{
+        display: inline-block;
+        .user-portrait{
+          display: inline-block;
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .user-name,.user-description{
+        margin-left: 12px;
+      }
+      .user-name{
+        font-size: 24px;
+      }
+    }
+    .answer-detail{
+      margin-top: 24px;
+    }
+  }
+  .comment-detail{
+    margin-top: 12px;
+    box-shadow: 0 0 1px #b2b2b2;
+    padding: 24px;
+    display: none;
+    .comment-length{
+      height: 30px;
+      line-height: 30px;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .comment-info{
+      margin-bottom: 12px;
+      .user-info{
+        height: 30px;
+        .user-portrait{
+          display: inline-block;
+          height: 30px;
+          width: 30px;
+        }
+        .user-name,.user-description{
+          margin-left: 12px;
+        }
+        .user-name{
+          font-size: 20px;
+        }
+      }
+      .comment-content{
+        margin-left: 42px;
+      }
+    }
+    .add-comment{
+      display: flex;
+      height: 40px;
+      margin-top: 12px;
+      .write-comment{
+        flex: 8;
+      }
+      .add-comment{
+        flex: 1;
+        margin: 0;
+      }
+    }
+    .takeUp-comment{
+      position: fixed;
+      bottom: 30px;
+      left: 900px;
+      height: 30px;
+      width: 93px;
+      background-color: #b2b2b2;
+      color: white;
+      font-size: 12px;
+      border-radius: 2px;
+    }
+  }
+}
+

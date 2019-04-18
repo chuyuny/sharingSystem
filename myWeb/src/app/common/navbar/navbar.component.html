@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default navbar-fixed-top nav-color">
+  <div class="container-mine">
+    <div class="navbar-header">
+      <a class="navbar-brand logo-a" href="#"><img class="logo-img" src="assets/img/logo.png" alt="logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <form class="navbar-form navbar-left" [formGroup]="searchForm" (ngSubmit)="seach()">
+        <div class="form-group">
+          <input type="text" class="form-control"  placeholder="Search" formControlName="keyWord" maxlength="11" >
+          <span  class="search-icon glyphicon glyphicon-search" *ngIf="!searchForm.valid"></span>
+        </div>
+        <button type="submit" *ngIf="!searchForm.valid" class="btn btn-default" (click)="showAsk()">提问</button>
+        <button type="submit" *ngIf="searchForm.valid " class="btn btn-default" [routerLink]="['/search']"  [queryParams]="{keyword: searchForm.value.keyWord}"><span class="search-icon glyphicon glyphicon-search margin-right-12" ></span>搜索</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/login-register" *ngIf="!isLogin">登录/注册</a></li>
+        <li class="dropdown" *ngIf="isLogin">
+          <a href="#" class="dropdown-toggle user-center glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" [routerLink]="['/profile',user.mobile,'actives']">个人中心</a></li>
+            <li><a target="_blank" [routerLink]="['/set']">设置</a></li>
+            <li><a href="#" (click)="exit()">退出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="ask" *ngIf=" showAskBox ">
+  <div class="ask-content">
+    <form action="" [formGroup]=" questionFrom " (ngSubmit)="onSubmitAsk()">
+      <div class="ask-item">
+        <img class="user-img" [src]="user.userPicture?user.userPicture:'assets/img/noUserPicture.jpg'" alt="">
+          <input type="text" class="form-control question-title" formControlName="questionTitle"  placeholder="请输入问题(至少三个字)">
+      </div>
+        <span class="help-block warning-red" [class.hidden]="questionFrom.value.questionTitle.untouched|| !questionFrom.hasError('minlength','questionTitle')">请至少输入三个字</span>
+        <div class="ask-detail">
+        <textarea rows="4" cols="30" class="question-detail" formControlName="questionContent" >请输入问题详情</textarea>
+      </div>
+      <button class="button release-ask" type="submit">发布问题</button>
+      </form>
+  </div>
+  <div class="close" (click)="showAskBox = !showAskBox">X</div>
+</div>

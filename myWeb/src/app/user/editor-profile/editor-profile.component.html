@@ -1,0 +1,97 @@
+
+<div class="container-mine" *ngIf="user">
+  <div class="profile" >
+    <div class="edit-profile row">
+      <div class=" col-sm-2">
+        <div class="user-picture">
+          <img class="user-portrait"  [src]="_d.bypassSecurityTrustUrl(user.userPicture? user.userPicture:'assets/img/noUserPicture.jpg')" >
+          <div class="update-img "><span class="glyphicon glyphicon-camera camera"></span><input type="file" (change)="fileChange($event)" value="修改图片" ></div>
+        </div>
+      </div>
+      <div class="user-detail col-sm-10">
+        <div class="Profile-contentHead">
+          <h1 class="Profile-title">
+            <div class="Fullname-editable" (mouseenter)="enter($event)" (mouseleave)="leave($event)" *ngIf="!showNameChange">
+              <span class="user-name" >{{user.userName}}</span>
+              <button type="button" class="change  button button-margin-right-24 " (click)="showNameChange=true">
+                <span class="glyphicon glyphicon-pencil icon-margin"></span>
+                修改
+              </button>
+            </div>
+            <div class="name-change" *ngIf="showNameChange">
+                <input type="text" class="form-control new-user-name" maxlength="10" [(ngModel)]="user.userName">
+                <div class="btnGroup">
+                  <button class="save" (click)="savaChange(user.userName,'userName')">保存</button>
+                  <button class="cancel" (click)="showNameChange=false">取消</button>
+                </div>
+            </div>
+          </h1>
+          <div class="go-profile pull-right">
+            <a type="button" class=" Button Button--plain" [routerLink]="['/profile',user.mobile,'actives']">返回我的主页</a>
+          </div>
+        </div>
+        <div class="ProfileEdit-fields">
+          <div class="Field">
+            <h3 class="Field-label">性别</h3>
+            <div class="Field-content"  >
+              <div (mouseenter)="enter($event)" (mouseleave)="leave($event)"  *ngIf="!showSexChange">
+                <span class="Field-text" >{{user.sex}}</span>
+                <button type="button" class="change button button-margin-right-24 "  (click)="showSexChange= true">
+                  <span class="glyphicon glyphicon-pencil icon-margin"></span>
+                  修改
+                </button>
+              </div>
+              <div class="sex-change" *ngIf="showSexChange">
+                <input type="radio" class="sex" name="sex" [(ngModel)]="user.sex" value="男"> <label class="Field-text">男</label>
+                <input type="radio" class="sex" name="sex" [(ngModel)]="user.sex" value="女"> <label  class="Field-text">女</label>
+                <div class="btnGroup">
+                  <button class="save" (click)="savaChange(user.sex,'sex')">保存</button>
+                  <button class="cancel"  (click)="showSexChange= false">取消</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="Field">
+            <h3 class="Field-label">一句话介绍</h3>
+            <div class="Field-content"  >
+              <div *ngIf="!showDescriptionChange" (mouseenter)="enter($event)" (mouseleave)="leave($event)">
+                <span class="Field-text" >{{user.userDescription? user.userDescription : '暂无'}}</span>
+                <button type="button" class="change button button-margin-right-24 " (click)="showDescriptionChange= true">
+                  <span class="glyphicon glyphicon-pencil icon-margin"></span>
+                  修改
+                </button>
+              </div>
+              <div class="description-change" *ngIf="showDescriptionChange">
+                <input class="description form-control" type="text" maxlength="20" [(ngModel)]="user.userDescription">
+                <div class="btnGroup">
+                  <button class="save" (click)="savaChange(user.userDescription,'description')">保存</button>
+                  <button class="cancel" (click)="showDescriptionChange= false">取消</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="Field">
+            <h3 class="Field-label">个人简介</h3>
+            <div class="Field-content">
+              <div (mouseenter)="enter($event)" (mouseleave)="leave($event)" *ngIf="!showIntroductionChange">
+                <span class="Field-text" >{{user.introduction?user.introduction:'暂无'}}</span>
+                <button type="button" class="change button button-margin-right-24 " (click)="showIntroductionChange=true">
+                  <span class="glyphicon glyphicon-pencil icon-margin"></span>
+                  修改
+                </button>
+              </div>
+              <div class="introduction-change" *ngIf="showIntroductionChange">
+                <textarea class="introduction form-control" type="text" [(ngModel)]="user.introduction"></textarea>
+                <div class="btnGroup">
+                  <button class="save" (click)="savaChange(user.introduction,'introduction')">保存</button>
+                  <button class="cancel" (click)="showIntroductionChange=false">取消</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

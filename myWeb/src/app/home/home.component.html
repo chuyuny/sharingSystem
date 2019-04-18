@@ -1,0 +1,24 @@
+
+<div class="home">
+  <!--<app-navbar></app-navbar>-->
+  <div class="container-mine">
+    <div class="row ">
+      <div class="col-sm-9">
+        <div class="top-tabCard">
+          <ul class="tab-list">
+            <li class="tab-item" ><a href="#" class="tab-link recommend" (click)="addActive($event,'answer-list')" [routerLink]="['/']">推荐</a></li>
+            <!--<li class="tab-item" ><a href="#" class="tab-link"  (click)="addActive($event)">关注</a></li>-->
+            <li class="tab-item" ><a href="#" class="tab-link hot" (click)="addActive($event,'hot')" [routerLink]="['/hot']">热榜</a></li>
+            <li class="tab-item" ><a href="#" class="tab-link hot-article" (click)="addActive($event,'hot-article')" [routerLink]="['/hot-article']">文章</a></li>
+          </ul>
+        </div>
+        <router-outlet></router-outlet>
+        <!--<app-answer-list *ngIf="homeState ===''"></app-answer-list>-->
+        <!--<app-answer-list *ngIf="homeState ==='question-list'"></app-answer-list>-->
+      </div>
+      <div class="col-sm-3 clear-padding">
+        <app-right-bar></app-right-bar>
+      </div>
+    </div>
+  </div>
+</div>

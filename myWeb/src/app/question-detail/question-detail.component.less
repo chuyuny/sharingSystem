@@ -1,0 +1,255 @@
+.question-detail{
+  //padding-top: 70px;
+  //min-height: 100%;
+  //background-color: #cccccc !important;
+  .question{
+    background-color: white;
+    margin-bottom: 24px;
+    padding: 24px;
+    .question-title{
+      margin-top: 0px;
+      font-weight: 700;
+    }
+    .question-content{
+      .question-detail-content{
+        .operation{
+          .follow-question,.write-answer{
+            height: 30px;
+            width: 100px;
+            background-color: #0084FF;
+            color: white;
+          }
+          .write-answer{
+            background-color: white;
+            border: 1px solid #0084FF;
+            color: #0084FF;
+          }
+        }
+        //.takeUp{
+        //  display: none;
+        //}
+      }
+      .editor-write{
+        margin-top: 24px;
+        margin-left: -8.33333333%;
+        //height: 300px;
+        .user-info{
+          display: flex;
+          margin-top: 12px;
+          margin-bottom: 12px;
+          padding-left: 24px;
+          .user-right{
+            .user-portrait{
+              display: inline-block;
+              height: 40px;
+              width: 40px;
+            }
+          }
+          .user-left{
+            margin-left: 12px;
+            margin-left: 12px;
+            .user-name,.user-description{
+              display: block;
+              font-size: 18px;
+              max-width: 120px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            .user-description{
+              font-size: 12px;
+            }
+          }
+        }
+      }
+      .question-list{
+        border-top: 1px solid #b2b2b2;
+        padding: 24px;
+        margin-bottom: 12px;
+        .article-list-content{
+          //background-color: red;
+          //max-height: 100px;
+          //overflow: hidden;
+          .article-content{
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+
+
+        }
+        .answer-detail{
+          margin-top: 24px;
+        }
+        .answer-content{
+          .user-info{
+            height: 30px;
+            .user-portrait{
+              display: inline-block;
+              height: 30px;
+              width: 30px;
+            }
+            .user-name,.user-description{
+              margin-left: 12px;
+            }
+            .user-name{
+              font-size: 24px;
+            }
+          }
+          .answer{
+            position: relative;
+            .answer-detail{
+              //max-height: 100px;
+              //overflow: hidden;
+            }
+            &.is-collapsed{
+              .answer-inner{
+                max-height: 300px;
+                overflow: hidden;
+              }
+            }
+            .read-all{
+              position: absolute;
+              padding-top: 10px;
+              bottom: 0px;
+              width: 100%;
+              height: 40px;
+              z-index: 1000000;
+              background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,1));
+              font-size: 24px;
+            }
+          }
+          .detail{
+            display: none;
+            .answer-detail{
+              margin-top: 24px;
+            }
+          }
+        }
+        .takeUp{
+          display: none;
+        }
+
+      }
+      .answer-item{
+
+      }
+      .comment{
+        height: 300px;
+      }
+      .comment-detail{
+        margin-top: 12px;
+        box-shadow: 0 0 1px #b2b2b2;
+        padding: 24px;
+        display: none;
+        .comment-length{
+          height: 30px;
+          line-height: 30px;
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+        .comment-info{
+          margin-bottom: 12px;
+          .user-info{
+            height: 30px;
+            .user-portrait{
+              display: inline-block;
+              height: 30px;
+              width: 30px;
+            }
+            .user-name,.user-description{
+              margin-left: 12px;
+            }
+            .user-name{
+              font-size: 20px;
+            }
+          }
+          .comment-content{
+            margin-left: 42px;
+          }
+        }
+        .add-comment{
+          display: flex;
+          height: 40px;
+          margin-top: 12px;
+          .write-comment{
+            flex: 8;
+          }
+          .add-comment{
+            flex: 1;
+            margin: 0;
+          }
+        }
+        .takeUp-comment{
+          position: fixed;
+          bottom: 30px;
+          left: 900px;
+          height: 30px;
+          width: 93px;
+          background-color: #b2b2b2;
+          color: white;
+          font-size: 12px;
+          border-radius: 2px;
+        }
+      }
+
+    }
+  }
+  .question-author{
+    margin-left: 24px;
+    box-shadow: 0 0 2px #b2b2b2;
+    padding: 12px;
+    .about-author{
+      font-size: 18px;
+    }
+    .user-info{
+      display: flex;
+      margin-top: 12px;
+      .user-right{
+        flex: 2;
+        .user-portrait{
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .user-left{
+        flex: 5;
+        margin-left: 12px;
+        .user-name,.user-description{
+          display: block;
+          font-size: 18px;
+          max-width: 120px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .user-description{
+          font-size: 12px;
+        }
+      }
+    }
+    .bottom{
+      margin-top: 12px;
+      height: 60px;
+      display: flex;
+      .article,.answer,.article-count,.answer-count{
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .article,.answer{
+        font-weight: 500;
+        color: #8590a6;
+      }
+      .article-count,.answer-count{
+        margin-top: 12px;
+      }
+      .bottom-left,.bottom-right{
+        flex: 1;
+        cursor: pointer;
+      }
+    }
+  }
+}

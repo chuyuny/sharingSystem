@@ -1,0 +1,93 @@
+<div class="question-detail" *ngIf="questionDetail">
+  <div class=" row question">
+    <div class="container-mine">
+      <div class="col-sm-9">
+        <div class="question-content">
+          <h2 class="question-title">{{ questionDetail.question.questionTitle }}</h2>
+          <!--question-detail-->
+          <div class="question-detail-content" >
+            <p *ngIf="isShowReadAll" [innerHtml]="questionDetail.question.questionContent" style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" class="article-content ">
+            </p>
+            <p *ngIf="!isShowReadAll" [innerHtml]="questionDetail.question.questionContent" ></p>
+            <div [hidden]="!isShowReadAll">
+              <button type="button" class="read-all button button-margin-right-12 "  (click)="readAll($event,isShowReadAll)">
+                阅读全文
+              </button>
+            </div>
+            <div class="operation margin-top-12">
+              <button type="button" class="follow-question button button-margin-right-24 " (click)="follow(questionDetail.isFollowed)" >{{questionDetail.isFollowed?'取消关注':'关注问题'}}</button>
+              <button type="button" class="write-answer button button-margin-right-24 " (click)="writeAnswer($event, firstClickEditor)">
+                <span class="glyphicon glyphicon-pencil icon-margin"></span>{{firstClickEditor?'写回答':'收起回答'}}
+              </button>
+              <button type="button" class="comment-btn button button-margin-right-24 " (click)="showComment($event,firstClickComment)">
+                <span class="glyphicon glyphicon-comment icon-margin"></span>
+                {{firstClickComment?'评论': '收起评论'}}
+              </button>
+              <button type="button" class="takeUp button button-margin-right-24 pull-right" [hidden]="isShowReadAll" (click)="takeUp($event,isShowReadAll)">
+                收起
+                <span class="glyphicon glyphicon-chevron-up  icon-margin-left"></span>
+              </button>
+            </div>
+            <div class="comment" *ngIf="isShowComment">
+              <app-comment-detail [(questionId)]="questionDetail.question.questionId"></app-comment-detail>
+            </div>
+          </div>
+          <div class="editor-write" *ngIf="isShowEditor">
+            <div class="user-info col-sm-offset-1">
+              <div class="user-right">
+                <img class="user-portrait" [src]="currentUser.userPicture?currentUser.userPicture: 'assets/img/noUserPicture.jpg'" alt="">
+              </div>
+              <div class="user-left">
+                <span class="user-name">{{currentUser.userName}}</span>
+                <span class="user-description">{{currentUser.userDescription+'cccccccccccccccccccccc'}}</span>
+              </div>
+            </div>
+            <app-editor [isWriteAnswer]="isWriteAnswer" [(questionId)]="questionDetail.question.questionId" [(answerArr)]="questionDetail.answerArr" ></app-editor>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 clear-padding ">
+        <div class="question-author" *ngIf="questionDetail.author">
+          <div class="about-author">关于作者</div>
+          <div class="user-info">
+            <div class="user-right">
+              <a [routerLink]="['/profile',questionDetail.author.mobile,'actives']">
+                <img class="user-portrait" [src]="questionDetail.author.userPicture" alt="">
+              </a>
+            </div>
+            <div class="user-left">
+              <a class="user-name" [routerLink]="['/profile',questionDetail.author.mobile,'actives']">{{questionDetail.author.userName}}</a>
+              <span class="user-description">{{questionDetail.author.userDescription+'cccccccccccccccccccccc'}}</span>
+            </div>
+          </div>
+          <div class="bottom">
+              <div class="bottom-left" [routerLink]="'/profile/'+questionDetail.author.mobile+'/articles'">
+                <div class="article">文章</div>
+                <div class="article-count">{{questionDetail.author.articleCount}}</div>
+              </div>
+              <div class="bottom-right" [routerLink]="'/profile/'+questionDetail.author.mobile+'/answers'">
+                <div class="answer">回答</div>
+                <div class="answer-count">{{questionDetail.author.answerCount}}</div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-mine" >
+    <div class="row ">
+      <div class="col-sm-9">
+        <div class="answer-list" *ngIf="questionDetail.answerArr">
+          <!--<app-answer-list [isAnswerList]="answerList" [(answerArr)]="answerArr" ></app-answer-list>-->
+          <div class="item-box" *ngFor="let answer of questionDetail.answerArr ; let i = index " >
+            <app-answer [(answer)]="questionDetail.answerArr[i]"></app-answer>
+          </div>
+        </div>
+        <div class="no-content" *ngIf="!questionDetail.answerArr"><img src="assets/img/no-content.png" alt=""></div>
+      </div>
+      <div class="col-sm-3 clear-padding">
+        <app-right-bar></app-right-bar>
+      </div>
+    </div>
+  </div>
+</div>

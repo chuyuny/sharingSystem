@@ -1,0 +1,28 @@
+<div class="profile" *ngIf="user" >
+    <div class="container-mine">
+    <div class="user-info row">
+      <div class="col-sm-2" >
+        <a class="a-link a-user-portrait " [routerLink]="['/profile',user.mobile,'actives']" ><img class="user-portrait" [src]="user.userPicture?user.userPicture:'assets/img/noUserPicture.jpg'" alt=""></a>
+      </div>
+      <div class="col-sm-10" >
+        <a class="a-link a-user-name" [routerLink]="['/profile',user.mobile,'actives']"><span class="user-name">{{user.userName}}</span></a>
+        <span class="user-description">{{user.userDescription}}</span>
+        <div class="user-detail" *ngIf="showAll">
+          <div class="sex"><span class="detail-item">性别：</span> <span class="detail-item">{{user.sex ? user.sex: '暂无'}}</span></div>
+          <div class="introduction"><span class="detail-item">个人简介：</span> <span class="detail-item">{{user.introduction ? user.introduction: '暂无'}}</span></div>
+        </div>
+      </div>
+      <div class="all" (click)="showAll =! showAll"><span class="glyphicon margin-right-12" [ngClass]="{'glyphicon-chevron-down':!showAll, 'glyphicon-chevron-up':showAll}"></span>查看全部资料</div>
+      <a target="_blank" class=" editor-profile pull-right" [routerLink]="['/editor-profile']" *ngIf="showEditor" >编辑个人资料</a>
+    </div>
+    <div class="profile-item col-sm-9">
+      <div class="card-box">
+        <app-tab-card [user]="user" [item]="item"></app-tab-card>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+    <div class="right col-sm-3">
+      <app-right-bar></app-right-bar>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+.article-box{
+  .logo-a{
+    height: 50px;
+    width: 60px;
+    padding: 0px;
+    margin-right: 24px;
+    //background:url(../../../assets/img/logo.jpg) no-repeat fixed top;
+    //position: relative;
+    .logo-img{
+      display: block;
+      height: 50px;
+    }
+  }
+  .article-detail-nav{
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1030;
+    background-color: #9487bf;
+    opacity: 1;
+    .article-detail-nav-right{
+      height: 100%;
+      .release{
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        color: white;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
+  .article-detail{
+    //margin-top: 50px;
+    padding: 24px;
+    background-color: white;
+    .article-title{
+      h2{
+        a{
+          color: #333;
+          &:hover{
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .user-info{
+      display: flex;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      .user-right{
+        .user-portrait{
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .user-left{
+        margin-left: 12px;
+        margin-left: 12px;
+        .user-name,.user-description{
+          display: block;
+          font-size: 18px;
+          max-width: 120px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .user-description{
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .article-detail-bottom{
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 2px;
+    z-index: 1030;
+    background-color: white;
+    box-shadow: 0 0 2px rgba(200,200,200,0.3);
+  }
+
+  .comment-detail{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1110000;
+    background-color: rgba(0,0,0,0.5);
+    padding: 48px;
+    .article-comment{
+      height: 600px;
+    }
+    .close-comment{
+      position: absolute;
+      z-index: 1110001;
+      height: 30px;
+      width: 30px;
+      color: white;
+      background-color: #a62d26;
+      line-height: 30px;
+      text-align: center;
+      font-size: 24px;
+      right: 120px;
+      top: 60px;
+    }
+  }
+}
+

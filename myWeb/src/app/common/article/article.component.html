@@ -1,0 +1,35 @@
+
+<div class="article" >
+  <div class="article-detail">
+    <div class="article-title"><h2><span (click)="goArticleDetail(article)" >{{article.article.articleTitle}}</span></h2></div>
+    <div class="user-info">
+      <div class="user-right">
+        <img class="user-portrait" [routerLink]="['/profile',article.articleAuthor.mobile,'actives']" [src]="article.articleAuthor.userPicture?article.articleAuthor.userPicture:'assets/img/noUserPicture.jpg' " alt="">
+      </div>
+      <div class="user-left">
+        <span class="user-name"  [routerLink]="['/profile',article.articleAuthor.mobile,'actives']" >{{article.articleAuthor.userName}}</span>
+        <span class="user-description">{{article.articleAuthor.userDescription+'cccccccccccccccccccccc'}}</span>
+      </div>
+    </div>
+    <div class="article-box " [ngClass]="{'is-collapsed':article.article.articleContent.length>=300}" (mouseleave)="getMouseleave($event)" (mouseenter)="getMouseEnter($event)">
+      <div class="article-inner">
+        <div class="article-content" [innerHTML]="article.article.articleContent | html">文章内容</div>
+      </div>
+      <button type="button" class="read-all button button-margin-right-12" [hidden]="article.article.articleContent.length? article.article.articleContent.length<=300: false" (click)="readAll($event)" >
+        阅读全文
+        <span class="glyphicon glyphicon-chevron-down  icon-margin-left"></span>
+      </button>
+      <button type="button" class="takeUp button button-margin-right-24 pull-right" (click)="takeUp($event)">
+        收起
+        <span class="glyphicon glyphicon-chevron-up  icon-margin-left"></span>
+      </button>
+    </div>
+  </div>
+  <div class="ask-status" *ngIf="isActive">
+    <span class="status-item">{{'发表时间：'+ (article.time | date:'yyyy-MM-dd')}}</span>
+  </div>
+  <!--operation-->
+  <div class="article-operation">
+    <app-operation [(article)]="article.article"></app-operation>
+  </div>
+</div>

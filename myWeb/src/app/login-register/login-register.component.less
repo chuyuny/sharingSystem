@@ -1,0 +1,114 @@
+
+.login-register-b{
+  width: 100%;
+  height: 800px;
+  //border: 1px solid green;
+  ////background-color: #bf8796;
+  //background: url("../../assets/img/login-bg.jpg");
+  //background-size: cover;
+  .login-register{
+    width: 400px;
+    margin: 80px auto 0;
+    background-color: white;
+    border-radius: 4px;
+    .sign-container{
+      .login{
+        padding: 48px;
+        .mobile-box,.password,.submit,.identifying-code,.user-name{
+          height: 40px;
+          margin-top: 24px;
+        }
+        .login-type{
+          margin-top: 24px;
+          text-align: center;
+          .type-item{
+            margin-right: 12px;
+            font-size: 16px;
+            font-weight: 400;
+          }
+        }
+
+        .submit{
+          background-color: #0084ff;
+          color: white;
+        }
+      }
+      .register{
+        padding: 48px;
+        .register-info{
+          margin-top: 24px;
+        }
+        .mobile-box,.identifying-code-box,.user-name-box,.password-box,.pConfirm-box,.submit{
+          height: 40px;
+          margin-top: 24px;
+        }
+        .submit{
+          background-color: #0084ff;
+          color: white;
+        }
+        .identifying-code-box,.user-name-box,.password-box,.pConfirm-box{
+          position: relative;
+          &:after{
+            content: '*';
+            height: 10px;
+            width: 10px;
+            font-size: 12px;
+            text-align: center;
+            line-height: 10px;
+            color: red;
+            position: absolute;
+            right: -18px;
+            bottom: 50%;
+            margin-top: 5px;
+          }
+        }
+        .mobile-box{
+          display: flex;
+          .mobile{
+            height: 40px;
+          }
+          .left{
+            flex: 7;
+          }
+          .get-identifying-code{
+            flex: 3;
+            padding: 4px;
+            font-size: 12px;
+            margin-left: 2px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            &.bg-gray{
+              background-color: #b2b2b2;
+            }
+          }
+        }
+
+
+      }
+      .forget-password{
+        display: inline-block;
+        width: 70px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover{
+          color: #0084ff;
+        }
+      }
+      .sign-switch{
+        height: 60px;
+        background-color: #b2b2b2;
+        text-align: center;
+        line-height: 60px;
+        span{
+          color: #0084ff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+

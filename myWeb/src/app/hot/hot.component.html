@@ -1,0 +1,20 @@
+
+<div class="hot-box" *ngIf="hots" >
+  <a target="_blank" class="question-list home-left" *ngFor="let hot of hots; let i = index" [routerLink]="['/question-detail',hot.question.questionId]">
+    <div class="row ">
+      <div class="question-list-left col-sm-1" [ngClass]="{'color': i<3}">{{i+1}}</div>
+      <div class="question-list-mid " [ngClass]="{'col-sm-7': hot.hotAnswer?hot.hotAnswer.answer.answerContent.match(imgReg): false, 'col-sm-11': hot.hotAnswer?!hot.hotAnswer.answer.answerContent.match(imgReg):true}" >
+        <h3><a >{{ hot.question.questionTitle }}</a></h3>
+        <div class=" article-list-content">
+          <p [innerHTML]="( hot.hotAnswer? (hot.hotAnswer.answer.answerContent.replace(imgReg,'')).replace(deleteHreg,''): hot.question.questionContent).substr(0,160)+'...'"></p>
+          <p class="hot"><span class="glyphicon glyphicon-fire icon-margin"></span>{{hot.hot+' 热度'}}</p>
+        </div>
+      </div>
+      <div class="question-list-right col-sm-4" *ngIf=" hot.hotAnswer?hot.hotAnswer.answer.answerContent.match(imgReg):false" [innerHTML]=" hot.hotAnswer.answer.answerContent.match(imgReg)[0]  | html" >
+      </div>
+    </div>
+</a>
+</div>
+<div *ngIf="!hots" class="no-content" style="height: 300px; width: 100%; text-align: center;line-height: 300px ;background-color: white;box-shadow: 0 0 1px rgba(200,200,200,0.3)">暂无内容</div>
+<div style="height: 40px;background-color:white; text-align:center; color: #a62d26;line-height: 40px; margin: 12px 0px" *ngIf="error">{{error}}</div>
+<div class="get-more" (click)="getMore(pageNo)">获取更多</div>

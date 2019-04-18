@@ -1,0 +1,9 @@
+<div class="collect" *ngFor="let collect of collects ; let i = index">
+  <span>{{collect.type}}</span>
+  <div class="answer" *ngIf=" collect.type ==='answer'">
+    <app-answer [userAnswerCollect]="collects[i].content"></app-answer>
+  </div>
+  <div class="article" *ngIf="collect.type === 'article'">
+    <app-article [(article)]="collects[i].content.article"></app-article>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="editor">
+  <nav class="editor-nav" *ngIf="!isWriteAnswer">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand logo-a" href="#"><img class="logo-img" src="assets/img/logo.png" alt="logo"></a>
+      </div>
+      <div class="editor-nav-right pull-right">
+        <a [routerLink]="['/editor']" class="release" *ngIf="false">发文章</a>
+        <button type="button" class="btn btn-default release" [ngClass]="{'disabled':!(isSubmit&& articleTitle.touched && articleTitle.valid)}" [disabled]="!(isSubmit&& articleTitle.touched && articleTitle.valid)" (click)="submit()">发布</button>
+      </div>
+    </div>
+  </nav>
+  <div [ngClass]="{'write':isWriteAnswer}">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="article-heading" *ngIf="!isWriteAnswer">
+        <input name="heading" id="heading" class="input-heading" rows="1" maxlength="20" placeholder="请输入标题（最少3字 最多20字）" [formControl]="articleTitle">
+      </div>
+      <span class="help-block warning-red" [class.hidden]="articleTitle.untouched || articleTitle.valid ">请至少输入三个字</span>
+      <div class="editor-content" [ngClass]="{'is-writeArticle':!isWriteAnswer}">
+        <div id="div1" class="toolbar"></div>
+        <div class="warning warning-red" *ngIf="isShowWarning">请输入五个字以上</div>
+        <div id="div2" class="text"> <!--可使用 min-height 实现编辑区域自动增加高度--></div>
+        <button class="button submit-answer" *ngIf="isWriteAnswer" (click)="submitAnswer()" >提交回答</button>
+      </div>
+    </div>
+  </div>
+</div>
